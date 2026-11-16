@@ -139,7 +139,8 @@ export type Scene = {
 export type Story = {
   id: string;
   title: string;
-  voiceover?: string;
+  /** Pfad in public/. null = ohne Stimme rendern (Timing bleibt erhalten, Musik ohne Ducking). */
+  voiceover?: string | null;
   music?: {src: string; volume?: number; ducked?: number};
   timing?: {
     leadInSec?: number;

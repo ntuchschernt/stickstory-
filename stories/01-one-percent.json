@@ -1,7 +1,7 @@
 {
   "id": "01-one-percent",
   "title": "One Percent",
-  "voiceover": "audio/vo.mp3",
+  "voiceover": null,
   "music": {
     "src": "audio/music.mp3",
     "volume": 0.2,

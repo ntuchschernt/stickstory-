@@ -22,7 +22,9 @@ if (!existsSync(storyPath)) {
   process.exit(1);
 }
 const story = JSON.parse(readFileSync(storyPath, 'utf8'));
-const voPath = join(root, 'public', story.voiceover ?? 'audio/vo.mp3');
+// Align braucht eine Stimme → war sie abgeschaltet (null), wird sie wieder eingetragen.
+if (!story.voiceover) story.voiceover = 'audio/vo.mp3';
+const voPath = join(root, 'public', story.voiceover);
 if (!existsSync(voPath)) {
   console.error(`FEHLER: ${voPath} fehlt. Erst "npm run vo" ausführen.`);
   process.exit(1);

@@ -30,7 +30,8 @@ const musicVolume = (t: number, speech: [number, number][], total: number, vol: 
 export const StoryComposition: React.FC<StoryProps> = ({story, showSafeZones}) => {
   const {fps} = useVideoConfig();
   const tl = useMemo(() => buildTimeline(story), [story]);
-  const vo = story.voiceover ?? 'audio/vo.mp3';
+  const vo = story.voiceover === undefined ? 'audio/vo.mp3' : story.voiceover;
+  const speech = vo ? tl.speech : [];
   const music = story.music;
 
   return (
@@ -52,7 +53,7 @@ export const StoryComposition: React.FC<StoryProps> = ({story, showSafeZones}) =
       })}
 
       {/* Voiceover: jeder Satz als eigener Ausschnitt → Pausen lassen sich frei verlängern */}
-      {tl.scenes.map((ts) => (
+      {vo && tl.scenes.map((ts) => (
         <Sequence key={`vo-${ts.scene.id}`} from={Math.round(ts.speechAt * fps)} durationInFrames={Math.ceil(ts.speechDur * fps) + 1} name={`VO ${ts.scene.id}`} layout="none">
           <Audio src={staticFile(vo)} trimBefore={Math.round(ts.voStart * fps)} durationInFrames={Math.ceil(ts.speechDur * fps)} volume={AUDIO.voVolume} />
         </Sequence>
@@ -63,7 +64,7 @@ export const StoryComposition: React.FC<StoryProps> = ({story, showSafeZones}) =
           src={staticFile(music.src)}
           loop
           loopVolumeCurveBehavior="extend"
-          volume={(f) => musicVolume(f / fps, tl.speech, tl.total, music.volume ?? AUDIO.musicVolume, music.ducked ?? AUDIO.musicDucked)}
+          volume={(f) => musicVolume(f / fps, speech, tl.total, music.volume ?? AUDIO.musicVolume, music.ducked ?? AUDIO.musicDucked)}
         />
       ) : null}
 

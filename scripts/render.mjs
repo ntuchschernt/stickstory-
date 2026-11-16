@@ -23,8 +23,10 @@ const run = (cmd, args) => {
 
 run('node', ['scripts/sync-stories.mjs']);
 
-if (!existsSync('public/audio/vo.mp3')) {
-  console.error('FEHLER: public/audio/vo.mp3 fehlt. Erst "npm run vo" ausführen.');
+if (story.voiceover === null) {
+  console.log('Hinweis: "voiceover": null → Video wird OHNE Stimme gerendert.');
+} else if (!existsSync(join('public', story.voiceover ?? 'audio/vo.mp3'))) {
+  console.error('FEHLER: Voiceover fehlt. Erst "npm run vo" ausführen (oder in der JSON "voiceover": null setzen).');
   process.exit(1);
 }
 const musicSrc = story.music?.src;

@@ -103,6 +103,8 @@ git push
 
 - `public/audio/vo.mp3` wird bei jedem neuen Video **überschrieben**. Willst du ein altes Video später neu rendern,
   benenne seine Datei um (z. B. `public/audio/vo-01.mp3`) und trage sie in dessen JSON unter `"voiceover"` ein.
+- Video **ohne Stimme** rendern (z. B. als Vorschau): in der JSON `"voiceover": null` setzen. Das Timing bleibt gleich.
+  `npm run align` trägt die Stimme automatisch wieder ein.
 - Soundeffekte neu erzeugen: `npm run sfx`.
 - Farben, Schriftgrößen, Safe Zones und Animationstempo stehen zentral in `src/theme.ts`.
 - Fehler „Browser konnte nicht geladen werden“: Remotion lädt beim ersten Rendern einmalig einen Browser herunter.
