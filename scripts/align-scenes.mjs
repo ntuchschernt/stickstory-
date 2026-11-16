@@ -60,7 +60,50 @@ if (inner.length < n - 1) {
     'Sprich zwischen den Sätzen deutlicher Pausen ein oder versuche: MIN_SILENCE=0.15 npm run align -- ' + id);
   process.exit(1);
 }
-const boundaries = [...inner].sort((a, b) => b.dur - a.dur).slice(0, n - 1).sort((a, b) => a.start - b.start);
+const byLen = [...inner].sort((a, b) => b.dur - a.dur);
+// Fall A: Die Szenenpausen sind deutlich länger als die Pausen im Satz → einfach die längsten nehmen.
+const clear = byLen.length === n - 1 || byLen[n - 2].dur > byLen[n - 1].dur * 1.5;
+let boundaries;
+if (clear && process.env.ALIGN_MODE !== 'text') {
+  boundaries = byLen.slice(0, n - 1).sort((a, b) => a.start - b.start);
+  console.log('Modus: deutliche Pausen zwischen den Szenen erkannt.');
+} else {
+  // Fall B: Alle Pausen ähnlich lang (z. B. CapCut-Stimme aus einem Textblock).
+  // → Grenzen so wählen, dass die Szenenlängen zu den Satzlängen in "script" passen
+  //   (gleiches Sprechtempo angenommen); längere Pausen werden leicht bevorzugt.
+  console.log('Modus: Pausen ähnlich lang → Szenengrenzen über die Satzlängen ("script") bestimmt.');
+  const chars = story.scenes.map((sc) => (sc.script ?? (sc.text ?? []).map((t) => t.content).join(' ')).replace(/[^\p{L}\p{N}]/gu, '').length || 1);
+  const totalChars = chars.reduce((a, b) => a + b, 0);
+  const cands = [...inner].sort((a, b) => a.start - b.start);
+  const silentBefore = (t) => cands.filter((c) => c.end <= t).reduce((a, c) => a + c.dur, 0);
+  const speechTotal = duration - cands.reduce((a, c) => a + c.dur, 0);
+  const speechAt = cands.map((c) => c.start - silentBefore(c.start));
+  const maxDur = Math.max(...cands.map((c) => c.dur));
+  const sceneLen = speechTotal / n;
+  let cum = 0;
+  const expected = chars.slice(0, -1).map((c) => ((cum += c) / totalChars) * speechTotal);
+  const cost = (j, i) => Math.abs(speechAt[j] - expected[i]) / sceneLen + 0.35 * (1 - cands[j].dur / maxDur);
+  // Dynamische Programmierung: n−1 Grenzen in zeitlicher Reihenfolge aus m Kandidaten.
+  const m = cands.length;
+  const k = n - 1;
+  const best = Array.from({length: k}, () => new Array(m).fill(Infinity));
+  const from = Array.from({length: k}, () => new Array(m).fill(-1));
+  for (let j = 0; j < m; j++) best[0][j] = cost(j, 0);
+  for (let i = 1; i < k; i++)
+    for (let j = i; j < m; j++)
+      for (let q = i - 1; q < j; q++)
+        if (best[i - 1][q] + cost(j, i) < best[i][j]) {
+          best[i][j] = best[i - 1][q] + cost(j, i);
+          from[i][j] = q;
+        }
+  let j = best[k - 1].indexOf(Math.min(...best[k - 1]));
+  const picked = [];
+  for (let i = k - 1; i >= 0; i--) {
+    picked.unshift(cands[j]);
+    j = from[i][j];
+  }
+  boundaries = picked;
+}
 const r2 = (v) => Math.round(v * 100) / 100;
 
 const rows = [];

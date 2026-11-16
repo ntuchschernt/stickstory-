@@ -11,7 +11,7 @@
     "leadInSec": 0.6,
     "outroHoldSec": 2.5,
     "minDurationSec": 61,
-    "maxExtraPauseSec": 0.6
+    "maxExtraPauseSec": 1.5
   },
   "scenes": [
     {

@@ -17,12 +17,15 @@ Eine Story-JSON plus ein Voiceover ergeben ein fertiges TikTok-Video (1080 × 19
 
 ## Für jedes neue Video
 
-### 1. Voiceover in CapCut aufnehmen
+### 1. Voiceover in CapCut erstellen
 
-- Sprich **einen Satz bzw. Absatz pro Szene**.
-- Lass zwischen den Szenen **gut 1 Sekunde Pause**. Daran erkennt das Skript die Szenengrenzen.
-- Kürzere Pausen innerhalb eines Absatzes sind okay. Sie werden als `pause1`, `pause2` … erkannt.
-- Exportiere als **MP4** und lege die Datei als `vo.mp4` ins Hauptverzeichnis (neben `package.json`).
+**Schnellster Weg:** Den ganzen Text als **einen** Textblock in CapCut einfügen → „Text zu Sprache“ → als MP4 exportieren.
+Die Absätze müssen nur mit Punkt, Fragezeichen oder Ausrufezeichen enden. Das Align-Skript erkennt die Szenengrenzen
+über die Satzlängen (Feld `script` in der JSON), deshalb muss der eingesprochene Text **genau** dem `script` entsprechen.
+
+- Tipp: CapCut-Sprechtempo auf etwa 0,9 stellen. Ist das Video kürzer als 61 Sekunden, werden die Pausen automatisch gestreckt.
+- Selbst eingesprochen geht genauso. Etwas längere Pausen zwischen den Absätzen helfen zusätzlich.
+- Die Datei als `vo.mp4` ins Hauptverzeichnis legen (neben `package.json`).
 
 ### 2. Story-JSON anlegen
 
