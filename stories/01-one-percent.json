@@ -1,0 +1,737 @@
+{
+  "id": "01-one-percent",
+  "title": "One Percent",
+  "voiceover": "audio/vo.mp3",
+  "music": {
+    "src": "audio/music.mp3",
+    "volume": 0.2,
+    "ducked": 0.06
+  },
+  "timing": {
+    "leadInSec": 0.6,
+    "outroHoldSec": 2.5,
+    "minDurationSec": 61,
+    "maxExtraPauseSec": 0.6
+  },
+  "scenes": [
+    {
+      "id": "s1-hook",
+      "script": "Nobody notices one percent.",
+      "text": [
+        {
+          "content": "Nobody notices\n*one percent.*"
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1
+        },
+        "to": {
+          "zoom": 1.06,
+          "y": 20
+        }
+      },
+      "elements": [
+        {
+          "type": "spotlight",
+          "x": 540,
+          "y": 1330,
+          "r": 300,
+          "at": -0.3
+        },
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 200,
+          "x2": 880,
+          "at": -0.4
+        },
+        {
+          "type": "figure",
+          "x": 540,
+          "y": 1330,
+          "scale": 1.2,
+          "pose": "stand",
+          "at": -0.2
+        }
+      ],
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": -0.3,
+          "volume": 0.25
+        }
+      ],
+      "vo": {
+        "start": 0,
+        "end": 2.79,
+        "pauses": []
+      }
+    },
+    {
+      "id": "s2-nothing",
+      "script": "One percent better at something today feels like nothing at all.",
+      "text": [
+        {
+          "content": "*1%* better today\nfeels like nothing."
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1.0
+        },
+        "to": {
+          "zoom": 1.04,
+          "x": 30,
+          "y": 20
+        }
+      },
+      "elements": [
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 160,
+          "x2": 900
+        },
+        {
+          "type": "stairs",
+          "x": 560,
+          "y": 1330,
+          "steps": 1,
+          "stepW": 140,
+          "stepH": 36,
+          "at": 0.4
+        },
+        {
+          "type": "figure",
+          "x": 360,
+          "y": 1330,
+          "scale": 0.95,
+          "path": [
+            {
+              "at": 0.6,
+              "x": 360,
+              "y": 1330
+            },
+            {
+              "at": 1.8,
+              "x": 530,
+              "y": 1330
+            },
+            {
+              "at": 2.4,
+              "x": 625,
+              "y": 1294
+            }
+          ],
+          "poses": [
+            {
+              "at": 2.4,
+              "pose": "stand"
+            }
+          ]
+        },
+        {
+          "type": "counter",
+          "x": 540,
+          "y": 830,
+          "from": 1,
+          "to": 1.01,
+          "decimals": 2,
+          "duration": 1.6,
+          "curve": "linear",
+          "size": 110,
+          "color": "textDim",
+          "at": 0.8
+        }
+      ],
+      "sfx": [
+        {
+          "name": "tick",
+          "at": 2.4,
+          "volume": 0.3
+        }
+      ],
+      "vo": {
+        "start": 4.56,
+        "end": 10.34,
+        "pauses": []
+      }
+    },
+    {
+      "id": "s3-nobody-sees",
+      "script": "No applause. No visible change. Just a small step that nobody sees.",
+      "text": [
+        {
+          "content": "No applause."
+        },
+        {
+          "at": "pause1",
+          "content": "No visible change."
+        },
+        {
+          "at": "pause2",
+          "content": "Just a small step\nthat *nobody* sees."
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1,
+          "x": 30
+        },
+        "to": {
+          "zoom": 1.12,
+          "x": 60,
+          "y": 110
+        }
+      },
+      "elements": [
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 140,
+          "x2": 920
+        },
+        {
+          "type": "stairs",
+          "x": 560,
+          "y": 1330,
+          "steps": 1,
+          "stepW": 140,
+          "stepH": 36
+        },
+        {
+          "type": "figure",
+          "x": 210,
+          "y": 1330,
+          "scale": 0.8,
+          "facing": -1,
+          "color": "figureDim",
+          "opacity": 0.7,
+          "until": "pause2"
+        },
+        {
+          "type": "figure",
+          "x": 320,
+          "y": 1330,
+          "scale": 0.8,
+          "facing": -1,
+          "color": "figureDim",
+          "opacity": 0.7,
+          "until": "pause2+0.2"
+        },
+        {
+          "type": "figure",
+          "x": 880,
+          "y": 1330,
+          "scale": 0.8,
+          "facing": 1,
+          "color": "figureDim",
+          "opacity": 0.7,
+          "until": "pause2+0.1"
+        },
+        {
+          "type": "spotlight",
+          "x": 625,
+          "y": 1294,
+          "r": 220,
+          "at": "pause2"
+        },
+        {
+          "type": "figure",
+          "x": 625,
+          "y": 1294,
+          "scale": 1.05,
+          "facing": 1,
+          "poses": [
+            {
+              "at": "pause1+0.2",
+              "pose": "shrug"
+            },
+            {
+              "at": "pause2+0.3",
+              "pose": "stand"
+            }
+          ]
+        }
+      ],
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "pause2",
+          "volume": 0.18
+        }
+      ],
+      "vo": {
+        "start": 12.11,
+        "end": 19.72,
+        "pauses": [
+          1.75,
+          4.09
+        ]
+      }
+    },
+    {
+      "id": "s4-again",
+      "script": "But do it again tomorrow. And the day after that. And the day after that.",
+      "text": [
+        {
+          "content": "But do it again\n*tomorrow.*"
+        },
+        {
+          "at": "pause1",
+          "content": "And the day after."
+        },
+        {
+          "at": "pause2",
+          "content": "And the day\nafter *that.*"
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 0.98,
+          "y": 20
+        },
+        "to": {
+          "zoom": 1.04,
+          "x": 40,
+          "y": -10
+        }
+      },
+      "elements": [
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 120,
+          "x2": 920
+        },
+        {
+          "type": "stairs",
+          "x": 220,
+          "y": 1330,
+          "steps": 6,
+          "stepW": 100,
+          "stepH": 36,
+          "stagger": 1,
+          "at": -0.2
+        },
+        {
+          "type": "figure",
+          "x": 160,
+          "y": 1330,
+          "scale": 0.85,
+          "path": [
+            {
+              "at": 0,
+              "x": 160,
+              "y": 1330
+            },
+            {
+              "at": 0.9,
+              "x": 270,
+              "y": 1294
+            },
+            {
+              "at": 1.9,
+              "x": 370,
+              "y": 1258
+            },
+            {
+              "at": 2.9,
+              "x": 470,
+              "y": 1222
+            },
+            {
+              "at": 3.9,
+              "x": 570,
+              "y": 1186
+            },
+            {
+              "at": 4.9,
+              "x": 670,
+              "y": 1150
+            },
+            {
+              "at": 5.9,
+              "x": 770,
+              "y": 1114
+            }
+          ]
+        }
+      ],
+      "sfx": [
+        {
+          "name": "tick",
+          "at": 0.9,
+          "volume": 0.2
+        },
+        {
+          "name": "tick",
+          "at": 1.9,
+          "volume": 0.2
+        },
+        {
+          "name": "tick",
+          "at": 2.9,
+          "volume": 0.2
+        },
+        {
+          "name": "tick",
+          "at": 3.9,
+          "volume": 0.2
+        },
+        {
+          "name": "tick",
+          "at": 4.9,
+          "volume": 0.2
+        },
+        {
+          "name": "tick",
+          "at": 5.9,
+          "volume": 0.2
+        }
+      ],
+      "vo": {
+        "start": 21.51,
+        "end": 28.95,
+        "pauses": [
+          2.73,
+          5.28
+        ]
+      }
+    },
+    {
+      "id": "s5-growth",
+      "script": "One percent better every day for a year is not three hundred and sixty five percent. It is almost thirty eight times better.",
+      "text": [
+        {
+          "content": "*1%* better every day\nfor a year\nis not 365%."
+        },
+        {
+          "at": "pause1",
+          "content": "It's almost\n*38× better.*"
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1
+        },
+        "to": {
+          "zoom": 1.05,
+          "y": 20
+        }
+      },
+      "elements": [
+        {
+          "type": "graph",
+          "x": 190,
+          "y": 830,
+          "w": 680,
+          "h": 470,
+          "curve": "growth",
+          "duration": 5.5,
+          "at": 0.2
+        },
+        {
+          "type": "counter",
+          "x": 440,
+          "y": 960,
+          "from": 1,
+          "to": 37.78,
+          "decimals": 2,
+          "suffix": "×",
+          "duration": 5.5,
+          "curve": "exp",
+          "size": 130,
+          "color": "accent",
+          "at": 0.2
+        }
+      ],
+      "sfx": [
+        {
+          "name": "rise",
+          "at": 0.3,
+          "volume": 0.22
+        },
+        {
+          "name": "chime",
+          "at": "pause1",
+          "volume": 0.25
+        }
+      ],
+      "vo": {
+        "start": 30.72,
+        "end": 42.47,
+        "pauses": [
+          5.46,
+          8.3
+        ]
+      }
+    },
+    {
+      "id": "s6-decline",
+      "script": "And one percent worse every day? After a year, almost nothing is left.",
+      "text": [
+        {
+          "content": "And 1% *worse*\nevery day?"
+        },
+        {
+          "at": "pause1",
+          "content": "After a year,\nalmost *nothing*\nis left."
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1.04,
+          "y": 10
+        },
+        "to": {
+          "zoom": 0.98
+        }
+      },
+      "elements": [
+        {
+          "type": "graph",
+          "x": 190,
+          "y": 860,
+          "w": 680,
+          "h": 440,
+          "curve": "decline",
+          "duration": 4.5,
+          "at": 0.2
+        },
+        {
+          "type": "counter",
+          "x": 650,
+          "y": 1075,
+          "from": 1,
+          "to": 0.03,
+          "decimals": 2,
+          "suffix": "×",
+          "duration": 4.5,
+          "curve": "exp",
+          "size": 120,
+          "color": "negative",
+          "at": 0.2
+        }
+      ],
+      "sfx": [
+        {
+          "name": "fall",
+          "at": 0.3,
+          "volume": 0.22
+        }
+      ],
+      "vo": {
+        "start": 44.25,
+        "end": 51.57,
+        "pauses": [
+          3.47,
+          5.1
+        ]
+      }
+    },
+    {
+      "id": "s7-repeat",
+      "script": "The difference between those two lives is not talent. It is what you repeat when nobody is watching.",
+      "text": [
+        {
+          "content": "The difference\nis not *talent.*"
+        },
+        {
+          "at": "pause1",
+          "content": "It's what you repeat\nwhen *nobody\nis watching.*"
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1
+        },
+        "to": {
+          "zoom": 1.08,
+          "x": 70,
+          "y": 40
+        }
+      },
+      "elements": [
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 140,
+          "x2": 920
+        },
+        {
+          "type": "figure",
+          "x": 270,
+          "y": 1330,
+          "scale": 0.9,
+          "pose": "slump",
+          "color": "figureDim",
+          "facing": 1
+        },
+        {
+          "type": "stairs",
+          "x": 520,
+          "y": 1330,
+          "steps": 4,
+          "stepW": 90,
+          "stepH": 40,
+          "stagger": 0.15,
+          "at": 0.1
+        },
+        {
+          "type": "figure",
+          "x": 470,
+          "y": 1330,
+          "scale": 0.9,
+          "path": [
+            {
+              "at": "pause1",
+              "x": 470,
+              "y": 1330
+            },
+            {
+              "at": "pause1+0.9",
+              "x": 565,
+              "y": 1290
+            },
+            {
+              "at": "pause1+1.8",
+              "x": 655,
+              "y": 1250
+            },
+            {
+              "at": "pause1+2.7",
+              "x": 745,
+              "y": 1210
+            },
+            {
+              "at": "pause1+3.6",
+              "x": 835,
+              "y": 1170
+            }
+          ]
+        },
+        {
+          "type": "spotlight",
+          "x": 835,
+          "y": 1170,
+          "r": 200,
+          "at": "pause1+3.4"
+        }
+      ],
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "pause1",
+          "volume": 0.15
+        }
+      ],
+      "vo": {
+        "start": 53.35,
+        "end": 62.13,
+        "pauses": [
+          4.85
+        ]
+      }
+    },
+    {
+      "id": "s8-today",
+      "script": "Start with one percent. Today.",
+      "text": [
+        {
+          "content": "Start with\n*one percent.*"
+        },
+        {
+          "at": "pause1",
+          "content": "*Today.*"
+        }
+      ],
+      "camera": {
+        "from": {
+          "zoom": 1
+        },
+        "to": {
+          "zoom": 1.1,
+          "x": 20,
+          "y": 120
+        }
+      },
+      "elements": [
+        {
+          "type": "spotlight",
+          "x": 560,
+          "y": 1330,
+          "r": 280,
+          "at": "pause1"
+        },
+        {
+          "type": "ground",
+          "y": 1330,
+          "x1": 200,
+          "x2": 880
+        },
+        {
+          "type": "stairs",
+          "x": 560,
+          "y": 1330,
+          "steps": 1,
+          "stepW": 140,
+          "stepH": 36,
+          "at": 0.2
+        },
+        {
+          "type": "figure",
+          "x": 400,
+          "y": 1330,
+          "scale": 1.05,
+          "path": [
+            {
+              "at": "pause1-0.6",
+              "x": 400,
+              "y": 1330
+            },
+            {
+              "at": "pause1+0.4",
+              "x": 530,
+              "y": 1330
+            },
+            {
+              "at": "pause1+1.0",
+              "x": 625,
+              "y": 1294
+            }
+          ]
+        },
+        {
+          "type": "label",
+          "x": 625,
+          "y": 1385,
+          "text": "Day 1",
+          "size": 40,
+          "color": "textDim",
+          "at": "pause1+1.0"
+        }
+      ],
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "pause1+1.0",
+          "volume": 0.3
+        },
+        {
+          "name": "chime",
+          "at": "end+0.4",
+          "volume": 0.2
+        }
+      ],
+      "vo": {
+        "start": 63.92,
+        "end": 67.39,
+        "pauses": [
+          2.69
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "stickstory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Code-animated minimalist stick-figure story videos (9:16) built with Remotion.",
+  "scripts": {
+    "studio": "node scripts/sync-stories.mjs && remotion studio",
+    "vo": "bash scripts/prepare-vo.sh",
+    "align": "node scripts/align-scenes.mjs",
+    "sfx": "bash scripts/make-sfx.sh",
+    "music": "bash scripts/make-music.sh",
+    "render": "node scripts/render.mjs",
+    "stills": "node scripts/stills.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/media-utils": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}
